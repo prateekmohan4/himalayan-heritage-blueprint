@@ -6,6 +6,15 @@ import { Button } from '@/components/ui/button';
 const SharedHeader = () => {
   const location = useLocation();
 
+  const navigationLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/shop', label: 'Shop' },
+    { path: '/expeditions', label: 'Expeditions' },
+    { path: '/blog', label: 'Blog' },
+    { path: '/community', label: 'Community' },
+    { path: '/learn', label: 'Learn' }
+  ];
+
   return (
     <header className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,41 +31,21 @@ const SharedHeader = () => {
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === '/' 
-                  ? 'text-emerald-600' 
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/shop" 
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === '/shop' 
-                  ? 'text-emerald-600' 
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Shop
-            </Link>
-            <Link 
-              to="/expeditions" 
-              className={`text-sm font-medium transition-colors ${
-                location.pathname === '/expeditions' 
-                  ? 'text-emerald-600' 
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Expeditions
-            </Link>
+            {navigationLinks.map((link) => (
+              <Link 
+                key={link.path}
+                to={link.path} 
+                className={`text-sm font-medium transition-colors ${
+                  location.pathname === link.path 
+                    ? 'text-emerald-600' 
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
             <a href="#about" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               About
-            </a>
-            <a href="#heritage" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-              Heritage
             </a>
             <a href="#contact" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               Contact
