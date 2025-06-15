@@ -4,43 +4,94 @@ import { Button } from "@/components/ui/button";
 const FeaturedStrains = () => {
   const strains = [
     {
-      name: "Malana Heritage",
-      region: "Malana Valley",
+      name: "Malana Cream",
+      region: "Himachal Pradesh",
+      subRegion: "Parvati Valley",
       image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Ancient genetics preserved through generations in the sacred Malana village",
+      description: "Sacred genetics from the ancient Malana village, preserved through generations of traditional cultivation",
       characteristics: [
         "Ancient genetic lineage",
-        "High altitude adaptation",
-        "Traditional cultivation methods"
+        "High altitude adaptation (2,650m)",
+        "Ceremonial cultivation methods",
+        "Creamy terpene profile"
       ],
-      altitude: "2,600m",
+      altitude: "2,650m",
       type: "Landrace Indica"
     },
     {
-      name: "Parvati Gold",
-      region: "Parvati Valley",
+      name: "Garhwali Gold",
+      region: "Uttarakhand",
+      subRegion: "Garhwali Hills",
       image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Golden resin producers from the sacred Parvati valley region",
+      description: "Golden resin producers from the sacred Garhwal region, known for exceptional terpene diversity",
       characteristics: [
         "Golden resin production",
-        "Mountain resilience",
-        "Heritage preservation"
+        "Sacred geography genetics",
+        "Traditional hill cultivation",
+        "Complex terpene matrix"
       ],
-      altitude: "2,100m",
+      altitude: "1,800m",
       type: "Landrace Hybrid"
     },
     {
-      name: "Kashmir Cream",
-      region: "Kashmir Valley",
+      name: "Kashmir Shiva",
+      region: "Kashmir & Ladakh",
+      subRegion: "Kashmir Valley",
       image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Creamy terpene profiles from the paradise valley of Kashmir",
+      description: "Paradise valley genetics with exceptional cold climate adaptation and spiritual significance",
       characteristics: [
-        "Creamy terpene profile",
-        "Cold climate adapted",
-        "Cultural significance"
+        "Paradise valley origin",
+        "Cold climate resilience",
+        "Cultural ceremonial use",
+        "Balanced cannabinoid profile"
       ],
-      altitude: "1,800m",
+      altitude: "1,600m",
       type: "Landrace Sativa"
+    },
+    {
+      name: "Nepal Temple",
+      region: "Nepal Himalayas",
+      subRegion: "Central Nepal",
+      image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Sacred temple genetics from the roof of the world, traditionally used in spiritual practices",
+      characteristics: [
+        "Temple cultivation heritage",
+        "Extreme altitude adaptation",
+        "Spiritual significance",
+        "Unique terpene expression"
+      ],
+      altitude: "3,200m",
+      type: "Landrace Sativa"
+    },
+    {
+      name: "Manipur Hills",
+      region: "Northeast India",
+      subRegion: "Manipur Hills",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Unique genetics from India's eastern frontiers with distinct Southeast Asian influences",
+      characteristics: [
+        "Southeast Asian influence",
+        "Monsoon adaptation",
+        "Tribal cultivation methods",
+        "Distinctive flavor profile"
+      ],
+      altitude: "1,400m",
+      type: "Landrace Hybrid"
+    },
+    {
+      name: "Hindu Kush Classic",
+      region: "Hindu Kush",
+      subRegion: "Chitral Valley",
+      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Ancient genetics from the legendary Hindu Kush mountains, prized for their resilience and potency",
+      characteristics: [
+        "Ancient mountain genetics",
+        "Legendary potency",
+        "Extreme weather adaptation",
+        "Historic trade route origins"
+      ],
+      altitude: "2,400m",
+      type: "Landrace Indica"
     }
   ];
 
@@ -52,7 +103,7 @@ const FeaturedStrains = () => {
             Featured <span className="text-amber-600">Heritage Strains</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Carefully preserved genetics from traditional Himalayan cultivation regions, maintained for educational and research purposes
+            Carefully preserved genetics from traditional Himalayan and Hindu Kush cultivation regions, maintained for educational and research purposes
           </p>
         </div>
 
@@ -69,9 +120,12 @@ const FeaturedStrains = () => {
                   alt={strain.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-4 right-4 flex flex-col gap-2">
                   <span className="px-3 py-1 bg-white/90 backdrop-blur-sm border border-amber-200 rounded-full text-amber-700 text-sm font-medium">
                     {strain.region}
+                  </span>
+                  <span className="px-2 py-1 bg-slate-800/80 text-white text-xs rounded-md">
+                    {strain.subRegion}
                   </span>
                 </div>
                 <div className="absolute bottom-4 left-4 flex gap-2">
