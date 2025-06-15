@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import RegionalCategories from "@/components/RegionalCategories";
 import FeaturedStrains from "@/components/FeaturedStrains";
+import CompanyInfo from "@/components/CompanyInfo";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
@@ -13,6 +14,7 @@ const Index = () => {
       <HeroSection />
       <RegionalCategories />
       <FeaturedStrains />
+      <CompanyInfo />
       <Newsletter />
       <Footer />
     </div>

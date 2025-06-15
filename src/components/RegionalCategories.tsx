@@ -4,72 +4,93 @@ import { Button } from "@/components/ui/button";
 const RegionalCategories = () => {
   const regions = [
     {
-      title: "Seeds from the High Himalayas",
-      description: "3000m+ altitude strains",
-      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "High Himalayas",
+      subtitle: "3000m+ Altitude Strains",
+      description: "Ancient genetics from the highest peaks",
+      image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      color: "emerald"
     },
     {
-      title: "Seeds from the Middle Hills",
-      description: "1500-3000m traditional zones",
-      image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "Middle Hills",
+      subtitle: "1500-3000m Traditional Zones",
+      description: "Heritage varieties from mountain slopes",
+      image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      color: "blue"
     },
     {
-      title: "Seeds from the Foothills",
-      description: "500-1500m heritage varieties",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "Foothills",
+      subtitle: "500-1500m Heritage Varieties",
+      description: "Traditional cultivation regions",
+      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      color: "amber"
     },
     {
-      title: "Seeds from Kashmir Valley",
-      description: "Traditional valley genetics",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      title: "Kashmir Valley",
+      subtitle: "Traditional Valley Genetics",
+      description: "Paradise valley cannabis heritage",
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      color: "purple"
     }
   ];
 
+  const getColorClasses = (color: string) => {
+    const colorMap = {
+      emerald: "from-emerald-50 to-emerald-100 border-emerald-200 hover:border-emerald-300 text-emerald-700",
+      blue: "from-blue-50 to-blue-100 border-blue-200 hover:border-blue-300 text-blue-700",
+      amber: "from-amber-50 to-amber-100 border-amber-200 hover:border-amber-300 text-amber-700",
+      purple: "from-purple-50 to-purple-100 border-purple-200 hover:border-purple-300 text-purple-700"
+    };
+    return colorMap[color as keyof typeof colorMap] || colorMap.emerald;
+  };
+
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
+    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Seeds by <span className="text-emerald-400">Region</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Seeds by <span className="text-emerald-600">Region</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Discover heritage cannabis genetics from distinct Himalayan ecosystems
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Discover heritage cannabis genetics from distinct Himalayan ecosystems, each adapted to unique environmental conditions
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {regions.map((region, index) => (
             <div 
               key={index} 
-              className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 hover:border-emerald-400/30 transition-all duration-500 hover:scale-105"
+              className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${getColorClasses(region.color)} border-2 transition-all duration-500 hover:scale-105 hover:shadow-xl`}
               style={{animationDelay: `${index * 100}ms`}}
             >
-              {/* Background Image */}
-              <div className="absolute inset-0">
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={region.image}
                   alt={region.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
               
               {/* Content */}
-              <div className="relative z-10 p-8 h-80 flex flex-col justify-end">
-                <h3 className="text-2xl font-bold text-white mb-2">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-1">
                   {region.title}
                 </h3>
-                <p className="text-slate-300 mb-6">
+                <p className="text-sm font-medium text-slate-600 mb-2">
+                  {region.subtitle}
+                </p>
+                <p className="text-sm text-slate-600 mb-4">
                   {region.description}
                 </p>
                 
-                <button className="self-start px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white font-medium hover:bg-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300">
-                  Explore
+                <button className="w-full py-2 px-4 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-lg text-slate-700 font-medium hover:bg-white hover:shadow-md transition-all duration-300">
+                  Explore Collection
                 </button>
               </div>
               
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Subtle Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>

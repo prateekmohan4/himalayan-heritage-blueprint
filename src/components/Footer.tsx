@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-slate-950 text-white py-16">
+    <footer className="bg-slate-800 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
@@ -55,7 +55,7 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8">
+        <div className="border-t border-slate-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-slate-400 text-sm">
               <p>Contact: <span className="text-emerald-400">himalayaseeds@protonmail.com</span></p>

@@ -7,46 +7,52 @@ const FeaturedStrains = () => {
       name: "Malana Heritage",
       region: "Malana Valley",
       image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Ancient genetics preserved through generations",
+      description: "Ancient genetics preserved through generations in the sacred Malana village",
       characteristics: [
-        "Ancient genetics",
+        "Ancient genetic lineage",
         "High altitude adaptation",
-        "Traditional cultivation"
-      ]
+        "Traditional cultivation methods"
+      ],
+      altitude: "2,600m",
+      type: "Landrace Indica"
     },
     {
       name: "Parvati Gold",
       region: "Parvati Valley",
       image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Golden resin producers from the sacred valley",
+      description: "Golden resin producers from the sacred Parvati valley region",
       characteristics: [
         "Golden resin production",
         "Mountain resilience",
-        "Heritage lineage"
-      ]
+        "Heritage preservation"
+      ],
+      altitude: "2,100m",
+      type: "Landrace Hybrid"
     },
     {
       name: "Kashmir Cream",
       region: "Kashmir Valley",
       image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Creamy terpenes from the valley of paradise",
+      description: "Creamy terpene profiles from the paradise valley of Kashmir",
       characteristics: [
         "Creamy terpene profile",
         "Cold climate adapted",
-        "Traditional methods"
-      ]
+        "Cultural significance"
+      ],
+      altitude: "1,800m",
+      type: "Landrace Sativa"
     }
   ];
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured <span className="text-amber-400">Heritage Strains</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Featured <span className="text-amber-600">Heritage Strains</span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Carefully preserved genetics from traditional Himalayan cultivation regions
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Carefully preserved genetics from traditional Himalayan cultivation regions, maintained for educational and research purposes
           </p>
         </div>
 
@@ -54,44 +60,56 @@ const FeaturedStrains = () => {
           {strains.map((strain, index) => (
             <div 
               key={index} 
-              className="group relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-slate-700/50 hover:border-amber-400/50 transition-all duration-500 hover:-translate-y-2"
+              className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 hover:border-amber-300 hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
             >
               {/* Strain Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={strain.image}
                   alt={strain.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4">
-                  <span className="px-3 py-1 bg-amber-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full text-amber-300 text-sm font-medium">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm border border-amber-200 rounded-full text-amber-700 text-sm font-medium">
                     {strain.region}
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-4 flex gap-2">
+                  <span className="px-2 py-1 bg-slate-800/80 text-white text-xs rounded-md">
+                    {strain.altitude}
+                  </span>
+                  <span className="px-2 py-1 bg-slate-800/80 text-white text-xs rounded-md">
+                    {strain.type}
                   </span>
                 </div>
               </div>
               
               {/* Content */}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-2">{strain.name}</h3>
-                <p className="text-slate-400 mb-4">{strain.description}</p>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-slate-800 mb-2">{strain.name}</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed">{strain.description}</p>
                 
                 {/* Characteristics */}
                 <div className="space-y-2 mb-6">
+                  <h4 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Key Characteristics</h4>
                   {strain.characteristics.map((char, charIndex) => (
-                    <div key={charIndex} className="flex items-center text-slate-300">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                      {char}
+                    <div key={charIndex} className="flex items-center text-slate-600">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3 flex-shrink-0"></div>
+                      <span className="text-sm">{char}</span>
                     </div>
                   ))}
                 </div>
                 
-                <button className="w-full py-3 bg-gradient-to-r from-amber-600 to-amber-700 rounded-xl text-white font-semibold hover:from-amber-500 hover:to-amber-600 transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25">
+                <button className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 rounded-xl text-white font-semibold hover:from-amber-400 hover:to-amber-500 transition-all duration-300 hover:shadow-lg">
                   Learn More
                 </button>
               </div>
               
-              {/* Animated Border Effect */}
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-transparent via-amber-500/10 to-transparent"></div>
+              {/* Subtle Border Animation */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                   style={{
+                     background: 'linear-gradient(45deg, transparent, rgba(245, 158, 11, 0.1), transparent)',
+                   }}></div>
             </div>
           ))}
         </div>
