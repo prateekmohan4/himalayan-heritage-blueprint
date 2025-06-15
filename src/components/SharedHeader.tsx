@@ -12,7 +12,10 @@ const SharedHeader = () => {
     { path: '/expeditions', label: 'Expeditions' },
     { path: '/blog', label: 'Blog' },
     { path: '/community', label: 'Community' },
-    { path: '/learn', label: 'Learn' }
+    { path: '/learn', label: 'Learn' },
+    { path: '/about', label: 'About' },
+    { path: '/contact', label: 'Contact' },
+    { path: '/support', label: 'Support' },
   ];
 
   return (
@@ -30,7 +33,7 @@ const SharedHeader = () => {
           </Link>
           
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path}
@@ -44,12 +47,6 @@ const SharedHeader = () => {
                 {link.label}
               </Link>
             ))}
-            <a href="#about" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-              About
-            </a>
-            <a href="#contact" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-              Contact
-            </a>
           </nav>
           
           {/* CTA Button */}
