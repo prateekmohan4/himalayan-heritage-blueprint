@@ -42,6 +42,16 @@ const SharedHeader = () => {
             >
               Shop
             </Link>
+            <Link 
+              to="/expeditions" 
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === '/expeditions' 
+                  ? 'text-emerald-600' 
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              Expeditions
+            </Link>
             <a href="#about" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
               About
             </a>
