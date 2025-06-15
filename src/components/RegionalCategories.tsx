@@ -1,6 +1,5 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
 const RegionalCategories = () => {
   const regions = [
@@ -27,43 +26,51 @@ const RegionalCategories = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Seeds by Region
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Seeds by <span className="text-emerald-400">Region</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Discover heritage cannabis genetics from distinct Himalayan ecosystems
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {regions.map((region, index) => (
-            <Card key={index} className="group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-0">
-              <div className="relative h-64 overflow-hidden">
+            <div 
+              key={index} 
+              className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 hover:border-emerald-400/30 transition-all duration-500 hover:scale-105"
+              style={{animationDelay: `${index * 100}ms`}}
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
                 <img
                   src={region.image}
                   alt={region.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
               </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              
+              {/* Content */}
+              <div className="relative z-10 p-8 h-80 flex flex-col justify-end">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   {region.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-slate-300 mb-6">
                   {region.description}
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-green-700 text-green-700 hover:bg-green-700 hover:text-white transition-colors duration-200"
-                >
+                
+                <button className="self-start px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white font-medium hover:bg-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300">
                   Explore
-                </Button>
-              </CardContent>
-            </Card>
+                </button>
+              </div>
+              
+              {/* Hover Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
           ))}
         </div>
       </div>
