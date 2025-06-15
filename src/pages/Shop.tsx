@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Search, Filter, Grid, List, MapPin, Mountain, Heart, ChevronDown, X } from 'lucide-react';
+import { Search, Filter, Grid, List, MapPin, Mountain, Heart, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SharedHeader from '@/components/SharedHeader';
@@ -72,34 +73,6 @@ const Shop = () => {
       ethicallySourced: true,
       communityPartnership: true,
       badges: ["100% Landrace", "Fast Flowering"]
-    },
-    {
-      id: 5,
-      name: "Spiti Special",
-      origin: "Pin Valley, Spiti",
-      region: "High Himalayas",
-      altitude: "3200m",
-      image: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      traditionalUse: "Sacred strain from the high-altitude desert regions",
-      characteristics: ["Extreme altitude adaptation", "Desert climate hardy", "Sacred monastery cultivation"],
-      availability: "Limited Stock",
-      ethicallySourced: true,
-      communityPartnership: true,
-      badges: ["100% Landrace", "Sacred Cultivation"]
-    },
-    {
-      id: 6,
-      name: "Chamba Green",
-      origin: "Chamba District, Himachal Pradesh",
-      region: "Middle Hills",
-      altitude: "1800m",
-      image: "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      traditionalUse: "Traditional strain used in local festivals and ceremonies",
-      characteristics: ["Festival grade quality", "Green phenotype", "Traditional hash making"],
-      availability: "In Stock",
-      ethicallySourced: true,
-      communityPartnership: false,
-      badges: ["100% Landrace", "Festival Grade"]
     }
   ];
 
