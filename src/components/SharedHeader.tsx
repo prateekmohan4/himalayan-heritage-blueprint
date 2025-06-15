@@ -19,29 +19,29 @@ const SharedHeader = () => {
   ];
 
   return (
-    <header className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">H</span>
+    <header className="bg-white/80 backdrop-blur-lg border-b border-slate-100 sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex justify-between items-center h-20">
+          {/* Minimal Logo */}
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
+              <span className="text-white font-bold text-lg">H</span>
             </div>
-            <span className="text-xl font-bold text-slate-900">
-              Himalayan Heritage Seeds
+            <span className="text-2xl font-light text-slate-900 tracking-tight">
+              Himalayan Heritage
             </span>
           </Link>
           
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* Clean Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path}
                 to={link.path} 
-                className={`text-sm font-medium transition-colors ${
+                className={`text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.path 
-                    ? 'text-emerald-600' 
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'text-emerald-600 scale-105' 
+                    : 'text-slate-600 hover:text-slate-900 hover:scale-105'
                 }`}
               >
                 {link.label}
@@ -49,12 +49,10 @@ const SharedHeader = () => {
             ))}
           </nav>
           
-          {/* CTA Button */}
-          <div className="flex items-center space-x-4">
-            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-              Explore Collection
-            </Button>
-          </div>
+          {/* Minimal CTA */}
+          <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 rounded-full px-6">
+            Explore
+          </Button>
         </div>
       </div>
     </header>
