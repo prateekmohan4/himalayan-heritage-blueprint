@@ -1,5 +1,5 @@
 
-import Header from "@/components/Header";
+import SharedHeader from "@/components/SharedHeader";
 import HeroSection from "@/components/HeroSection";
 import RegionalCategories from "@/components/RegionalCategories";
 import FeaturedStrains from "@/components/FeaturedStrains";
@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <SharedHeader />
       <HeroSection />
       <RegionalCategories />
       <FeaturedStrains />
