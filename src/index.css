@@ -7,16 +7,16 @@
 
 @layer base {
   :root {
-    /* Refined Color Palette - Himalayan Stone */
+    /* Himalayan Stone Palette */
     --background: 248 247 244; /* #F8F7F4 - Warm off-white */
     --foreground: 45 45 42; /* #2D2D2A - Deep charcoal with warm undertones */
-    --card: 245 244 240; /* Slightly darker card background */
+    --card: 248 247 244; /* Same as background for clean look */
     --card-foreground: 45 45 42;
     --popover: 248 247 244;
     --popover-foreground: 45 45 42;
     --primary: 74 93 90; /* #4A5D5A - Muted sage green */
     --primary-foreground: 248 247 244;
-    --secondary: 240 239 235;
+    --secondary: 245 244 240;
     --secondary-foreground: 45 45 42;
     --muted: 240 239 235;
     --muted-foreground: 115 115 115;
@@ -27,7 +27,7 @@
     --border: 229 228 226;
     --input: 229 228 226;
     --ring: 74 93 90;
-    --radius: 0rem; /* Clean, sharp corners */
+    --radius: 0rem;
     
     /* Sidebar colors */
     --sidebar-background: 248 247 244;

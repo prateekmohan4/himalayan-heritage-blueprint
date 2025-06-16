@@ -41,7 +41,7 @@ const SharedHeader = () => {
                 className={`text-sm font-light tracking-wider transition-colors duration-200 ${
                   location.pathname === link.path 
                     ? 'text-primary' 
-                    : 'text-muted-foreground hover:text-foreground'
+                    : 'text-foreground hover:text-primary'
                 }`}
               >
                 {link.label}

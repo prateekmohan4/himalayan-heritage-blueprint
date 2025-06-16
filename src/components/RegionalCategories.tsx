@@ -42,7 +42,7 @@ const RegionalCategories = () => {
   ];
 
   return (
-    <section className="premium-spacing">
+    <section className="premium-spacing bg-background">
       <div className="swiss-grid">
         {/* Section Header */}
         <div className="col-span-12 text-center mb-20">
@@ -81,7 +81,7 @@ const RegionalCategories = () => {
                   </div>
                 </div>
                 
-                {/* Minimal Typography */}
+                {/* Clean Typography - No Background */}
                 <div className="pt-6">
                   <h3 className="text-2xl font-light text-foreground tracking-wide">
                     {region.title}

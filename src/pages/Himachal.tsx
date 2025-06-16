@@ -82,7 +82,7 @@ const Himachal = () => {
       </div>
 
       {/* Explore the Regions Section */}
-      <div className="premium-spacing">
+      <div className="premium-spacing bg-background">
         <div className="swiss-grid">
           <div className="col-span-12 text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 tracking-wide">
@@ -111,6 +111,7 @@ const Himachal = () => {
                     />
                   </div>
                   
+                  {/* Clean Typography - No Background */}
                   <div className="pt-6">
                     <h3 className="text-2xl font-light text-foreground mb-3 tracking-wide">
                       {region.name}
@@ -126,8 +127,8 @@ const Himachal = () => {
         </div>
       </div>
 
-      {/* Heritage & Research Section - Using the Perfect Style */}
-      <div className="premium-spacing">
+      {/* Heritage & Research Section */}
+      <div className="premium-spacing bg-background">
         <div className="swiss-grid">
           <div className="col-span-12 text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8 tracking-wide">

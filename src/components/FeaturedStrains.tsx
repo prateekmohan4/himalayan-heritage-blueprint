@@ -42,7 +42,7 @@ const FeaturedStrains = () => {
   ];
 
   return (
-    <section className="premium-spacing bg-card/30">
+    <section className="premium-spacing bg-background">
       <div className="swiss-grid">
         {/* Section Header */}
         <div className="col-span-12 text-center mb-20">
@@ -74,7 +74,7 @@ const FeaturedStrains = () => {
                   />
                 </div>
                 
-                {/* Minimal Content */}
+                {/* Clean Content - No Background */}
                 <div className="pt-6">
                   <h3 className="text-xl font-medium text-foreground mb-2 tracking-wide">
                     {strain.name}
