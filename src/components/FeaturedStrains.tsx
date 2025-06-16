@@ -42,11 +42,11 @@ const FeaturedStrains = () => {
   ];
 
   return (
-    <section className="premium-spacing bg-background">
+    <section className="premium-spacing">
       <div className="swiss-grid">
         {/* Section Header */}
         <div className="col-span-12 text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 tracking-wide">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-wide" style={{ color: '#2D2D2A' }}>
             Featured Heritage Strains
           </h2>
           <p className="editorial-text mx-auto">
@@ -64,7 +64,7 @@ const FeaturedStrains = () => {
               style={{ animationDelay: `${index * 120}ms` }}
             >
               {/* Clean Archival Card */}
-              <div className="bg-background overflow-hidden">
+              <div className="overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
                 {/* High-Quality Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -75,11 +75,11 @@ const FeaturedStrains = () => {
                 </div>
                 
                 {/* Clean Content - No Background */}
-                <div className="pt-6">
-                  <h3 className="text-xl font-medium text-foreground mb-2 tracking-wide">
+                <div className="pt-6 px-6 pb-6">
+                  <h3 className="text-xl font-medium mb-2 tracking-wide" style={{ color: '#2D2D2A' }}>
                     {strain.name}
                   </h3>
-                  <p className="text-muted-foreground font-light tracking-wide">
+                  <p className="font-light tracking-wide" style={{ color: '#737373' }}>
                     {strain.origin}
                   </p>
                 </div>

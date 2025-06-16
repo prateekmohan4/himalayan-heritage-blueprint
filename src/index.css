@@ -10,9 +10,9 @@
     /* Himalayan Stone Palette */
     --background: 248 247 244; /* #F8F7F4 - Warm off-white */
     --foreground: 45 45 42; /* #2D2D2A - Deep charcoal with warm undertones */
-    --card: 248 247 244; /* Same as background for clean look */
+    --card: 255 255 255; /* #FFFFFF - Pure white for cards */
     --card-foreground: 45 45 42;
-    --popover: 248 247 244;
+    --popover: 255 255 255;
     --popover-foreground: 45 45 42;
     --primary: 74 93 90; /* #4A5D5A - Muted sage green */
     --primary-foreground: 248 247 244;
@@ -69,7 +69,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-serif;
+    background-color: #F8F7F4;
+    color: #2D2D2A;
     font-family: 'Lora', serif;
   }
 
@@ -78,10 +79,12 @@
     @apply font-sans;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0.025em;
+    color: #2D2D2A;
   }
 
   p, span, div {
     @apply leading-relaxed;
+    color: #2D2D2A;
   }
 }
 
@@ -161,7 +164,7 @@
 .editorial-text {
   font-size: 1.125rem;
   line-height: 1.8;
-  color: hsl(var(--muted-foreground));
+  color: #737373;
   max-width: 65ch;
 }
 
@@ -170,6 +173,7 @@
   font-weight: 300;
   letter-spacing: -0.025em;
   line-height: 1.1;
+  color: #2D2D2A;
 }
 
 @media (min-width: 768px) {

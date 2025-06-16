@@ -30,7 +30,13 @@ const HeroSection = () => {
         </p>
         
         {/* Single, Clear CTA */}
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium tracking-wide transition-all duration-300 soft-shadow-hover">
+        <Button 
+          className="px-12 py-6 text-lg font-medium tracking-wide transition-all duration-300 soft-shadow-hover"
+          style={{
+            backgroundColor: '#4A5D5A',
+            color: '#F8F7F4'
+          }}
+        >
           Explore the Collection
         </Button>
         

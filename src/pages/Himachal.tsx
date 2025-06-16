@@ -57,7 +57,7 @@ const Himachal = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <SharedHeader />
       
       {/* Hero Section */}
@@ -82,10 +82,10 @@ const Himachal = () => {
       </div>
 
       {/* Explore the Regions Section */}
-      <div className="premium-spacing bg-background">
+      <div className="premium-spacing">
         <div className="swiss-grid">
           <div className="col-span-12 text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 tracking-wide">
+            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-wide" style={{ color: '#2D2D2A' }}>
               Explore the Regions
             </h2>
             <p className="editorial-text mx-auto">
@@ -102,7 +102,7 @@ const Himachal = () => {
                 className="group cursor-pointer subtle-lift gentle-fade-in"
               >
                 {/* Clean Archival Card */}
-                <div className="bg-background overflow-hidden">
+                <div className="overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={region.image}
@@ -112,11 +112,11 @@ const Himachal = () => {
                   </div>
                   
                   {/* Clean Typography - No Background */}
-                  <div className="pt-6">
-                    <h3 className="text-2xl font-light text-foreground mb-3 tracking-wide">
+                  <div className="pt-6 px-6 pb-6">
+                    <h3 className="text-2xl font-light mb-3 tracking-wide" style={{ color: '#2D2D2A' }}>
                       {region.name}
                     </h3>
-                    <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                    <p className="text-sm font-light leading-relaxed" style={{ color: '#737373' }}>
                       {region.subtitle}
                     </p>
                   </div>
@@ -128,10 +128,10 @@ const Himachal = () => {
       </div>
 
       {/* Heritage & Research Section */}
-      <div className="premium-spacing bg-background">
+      <div className="premium-spacing">
         <div className="swiss-grid">
           <div className="col-span-12 text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8 tracking-wide">
+            <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-wide" style={{ color: '#2D2D2A' }}>
               Preserving Ancient Knowledge
             </h2>
             <p className="editorial-text mx-auto mb-12">
@@ -143,16 +143,16 @@ const Himachal = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               <div className="text-center">
-                <div className="text-3xl font-light text-foreground mb-2">12+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider">Documented Regions</div>
+                <div className="text-3xl font-light mb-2" style={{ color: '#2D2D2A' }}>12+</div>
+                <div className="text-sm uppercase tracking-wider" style={{ color: '#737373' }}>Documented Regions</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-foreground mb-2">50+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider">Local Partnerships</div>
+                <div className="text-3xl font-light mb-2" style={{ color: '#2D2D2A' }}>50+</div>
+                <div className="text-sm uppercase tracking-wider" style={{ color: '#737373' }}>Local Partnerships</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-foreground mb-2">8</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wider">Years of Research</div>
+                <div className="text-3xl font-light mb-2" style={{ color: '#2D2D2A' }}>8</div>
+                <div className="text-sm uppercase tracking-wider" style={{ color: '#737373' }}>Years of Research</div>
               </div>
             </div>
           </div>

@@ -14,19 +14,19 @@ const SharedHeader = () => {
   ];
 
   return (
-    <header className="bg-background border-b border-border/40 sticky top-0 z-50">
+    <header style={{ backgroundColor: 'transparent' }} className="border-b border-border/40 sticky top-0 z-50">
       <div className="swiss-grid py-8">
         <div className="col-span-12 flex justify-between items-center">
           {/* Refined Logo */}
           <Link to="/" className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-medium text-sm tracking-wider">H</span>
+            <div className="w-8 h-8 flex items-center justify-center" style={{ backgroundColor: '#4A5D5A' }}>
+              <span className="text-white font-medium text-sm tracking-wider">H</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-light text-foreground tracking-wider">
+              <span className="text-lg font-light tracking-wider" style={{ color: '#2D2D2A' }}>
                 Himalayan Heritage
               </span>
-              <span className="text-xs text-muted-foreground font-light tracking-widest uppercase">
+              <span className="text-xs font-light tracking-widest uppercase" style={{ color: '#737373' }}>
                 Botanical Archive
               </span>
             </div>
@@ -38,11 +38,10 @@ const SharedHeader = () => {
               <Link 
                 key={link.path}
                 to={link.path} 
-                className={`text-sm font-light tracking-wider transition-colors duration-200 ${
-                  location.pathname === link.path 
-                    ? 'text-primary' 
-                    : 'text-foreground hover:text-primary'
-                }`}
+                className={`text-sm font-light tracking-wider transition-colors duration-200`}
+                style={{ 
+                  color: location.pathname === link.path ? '#4A5D5A' : '#2D2D2A'
+                }}
               >
                 {link.label}
               </Link>
@@ -50,7 +49,16 @@ const SharedHeader = () => {
           </nav>
           
           {/* Minimal Support Button */}
-          <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-light tracking-wider px-6">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="font-light tracking-wider px-6"
+            style={{
+              borderColor: '#4A5D5A',
+              color: '#4A5D5A',
+              backgroundColor: 'transparent'
+            }}
+          >
             Support
           </Button>
         </div>

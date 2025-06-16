@@ -42,11 +42,11 @@ const RegionalCategories = () => {
   ];
 
   return (
-    <section className="premium-spacing bg-background">
+    <section className="premium-spacing">
       <div className="swiss-grid">
         {/* Section Header */}
         <div className="col-span-12 text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 tracking-wide">
+          <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-wide" style={{ color: '#2D2D2A' }}>
             Seeds by Geographic Region
           </h2>
           <p className="editorial-text mx-auto">
@@ -64,7 +64,7 @@ const RegionalCategories = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Clean Archival Card */}
-              <div className="bg-background overflow-hidden">
+              <div className="overflow-hidden" style={{ backgroundColor: '#FFFFFF' }}>
                 {/* High-Quality Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -75,15 +75,15 @@ const RegionalCategories = () => {
                   
                   {/* Strain Count Overlay on Hover */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="px-3 py-1 bg-background/95 backdrop-blur-sm text-foreground text-sm font-light tracking-wide">
+                    <span className="px-3 py-1 text-sm font-light tracking-wide" style={{ backgroundColor: 'rgba(248, 247, 244, 0.95)', color: '#2D2D2A' }}>
                       {region.strainCount} Strains
                     </span>
                   </div>
                 </div>
                 
                 {/* Clean Typography - No Background */}
-                <div className="pt-6">
-                  <h3 className="text-2xl font-light text-foreground tracking-wide">
+                <div className="pt-6 px-6 pb-6">
+                  <h3 className="text-2xl font-light tracking-wide" style={{ color: '#2D2D2A' }}>
                     {region.title}
                   </h3>
                 </div>
