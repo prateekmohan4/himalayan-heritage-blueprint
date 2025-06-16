@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import SharedHeader from '@/components/SharedHeader';
 import Footer from '@/components/Footer';
@@ -63,30 +62,36 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div style={{ backgroundColor: '#F8F7F4', minHeight: '100vh' }}>
       <SharedHeader />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900 text-white py-24">
+      <section className="relative py-24" style={{ backgroundColor: '#2D2D2A', color: '#F8F7F4', marginTop: '0' }}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl font-bold mb-6" style={{ color: '#F8F7F4' }}>
               Himalayan Cannabis Research Journal
             </h1>
-            <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 max-w-3xl mx-auto" style={{ color: '#F8F7F4', opacity: 0.9 }}>
               Scientific documentation, traditional knowledge, and conservation insights
             </p>
             
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5" style={{ color: '#737373' }} />
               <input
                 type="text"
                 placeholder="Search research articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border focus:outline-none focus:ring-2"
+                style={{ 
+                  backgroundColor: '#FFFFFF',
+                  color: '#2D2D2A',
+                  borderColor: '#E5E4E2',
+                  focusRingColor: '#4A5D5A'
+                }}
               />
             </div>
           </div>
@@ -99,10 +104,10 @@ const Blog = () => {
           {/* Sidebar - Categories */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
-              <Card className="p-6">
+              <div className="card-clean p-6">
                 <div className="flex items-center gap-2 mb-6">
-                  <Filter className="h-5 w-5 text-emerald-600" />
-                  <h3 className="text-lg font-semibold">Research Categories</h3>
+                  <Filter className="h-5 w-5" style={{ color: '#4A5D5A' }} />
+                  <h3 className="text-lg font-semibold" style={{ color: '#2D2D2A' }}>Research Categories</h3>
                 </div>
                 
                 <div className="space-y-2">
@@ -112,9 +117,13 @@ const Blog = () => {
                       onClick={() => setSelectedCategory(category.slug)}
                       className={`w-full text-left p-3 rounded-lg transition-colors ${
                         selectedCategory === category.slug
-                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                          : 'hover:bg-slate-100 text-slate-700'
+                          ? 'border border-green-200'
+                          : 'hover:bg-slate-100'
                       }`}
+                      style={{
+                        backgroundColor: selectedCategory === category.slug ? '#F0F4F0' : 'transparent',
+                        color: selectedCategory === category.slug ? '#4A5D5A' : '#2D2D2A'
+                      }}
                     >
                       <div className="flex justify-between items-center">
                         <span className="text-sm font-medium">{category.name}</span>
@@ -125,7 +134,7 @@ const Blog = () => {
                     </button>
                   ))}
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
 
@@ -134,11 +143,11 @@ const Blog = () => {
             
             {/* Featured Articles Section */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">Featured Research Articles</h2>
+              <h2 className="text-3xl font-bold mb-8" style={{ color: '#2D2D2A' }}>Featured Research Articles</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {featuredArticles.map((article) => (
-                  <Card key={article.id} className="group hover:shadow-xl transition-all duration-300 cursor-pointer">
+                  <div key={article.id} className="card-clean cursor-pointer">
                     <div className="aspect-video bg-slate-200 rounded-t-lg overflow-hidden">
                       <img
                         src={article.image}
@@ -147,9 +156,9 @@ const Blog = () => {
                       />
                     </div>
                     
-                    <CardHeader className="pb-3">
+                    <div className="card-content-clean">
                       <div className="flex flex-wrap gap-2 mb-3">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-xs" style={{ borderColor: '#4A5D5A', color: '#4A5D5A' }}>
                           {article.type}
                         </Badge>
                         {article.tags.slice(0, 2).map((tag, index) => (
@@ -159,17 +168,15 @@ const Blog = () => {
                         ))}
                       </div>
                       
-                      <CardTitle className="text-lg leading-tight group-hover:text-emerald-600 transition-colors">
+                      <h3 className="card-title-clean">
                         {article.title}
-                      </CardTitle>
-                    </CardHeader>
-                    
-                    <CardContent className="pt-0">
-                      <p className="text-slate-600 text-sm mb-4 line-clamp-3">
+                      </h3>
+                      
+                      <p className="card-subtitle-clean mb-4 line-clamp-3">
                         {article.excerpt}
                       </p>
                       
-                      <div className="flex items-center justify-between text-xs text-slate-500">
+                      <div className="flex items-center justify-between text-xs" style={{ color: '#737373' }}>
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1">
                             <User className="h-3 w-3" />
@@ -185,8 +192,8 @@ const Blog = () => {
                           <span>{article.readTime}</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -194,15 +201,15 @@ const Blog = () => {
             {/* Recent Articles */}
             <div>
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold text-slate-900">Recent Research</h2>
-                <Button variant="outline">
+                <h2 className="text-3xl font-bold" style={{ color: '#2D2D2A' }}>Recent Research</h2>
+                <Button variant="outline" className="btn-primary-clean">
                   View All Articles
                 </Button>
               </div>
               
               <div className="space-y-6">
                 {featuredArticles.map((article) => (
-                  <Card key={`recent-${article.id}`} className="p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                  <div key={`recent-${article.id}`} className="card-clean p-6 hover:shadow-lg transition-shadow cursor-pointer">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div className="md:col-span-1">
                         <div className="aspect-video bg-slate-200 rounded-lg overflow-hidden">
@@ -216,7 +223,7 @@ const Blog = () => {
                       
                       <div className="md:col-span-3">
                         <div className="flex flex-wrap gap-2 mb-3">
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="outline" className="text-xs" style={{ borderColor: '#4A5D5A', color: '#4A5D5A' }}>
                             {article.type}
                           </Badge>
                           {article.tags.map((tag, index) => (
@@ -252,7 +259,7 @@ const Blog = () => {
                         </div>
                       </div>
                     </div>
-                  </Card>
+                  </div>
                 ))}
               </div>
             </div>

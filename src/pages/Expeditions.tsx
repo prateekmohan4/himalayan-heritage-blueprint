@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Calendar, Users, MapPin, BookOpen, Heart, ArrowRight, Play, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -124,11 +123,11 @@ const Expeditions = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div style={{ backgroundColor: '#F8F7F4', minHeight: '100vh' }}>
       <SharedHeader />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden" style={{ marginTop: '0' }}>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -140,13 +139,13 @@ const Expeditions = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Himalayan Landrace Conservation
-            <span className="block text-emerald-400">Expeditions</span>
+            <span className="block" style={{ color: '#4A5D5A' }}>Expeditions</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 mb-8 font-light">
             Research-driven seed hunting missions preserving traditional cannabis genetics
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4">
+            <Button size="lg" className="btn-primary-clean px-8 py-4">
               <Heart className="mr-2 h-5 w-5" />
               Support Our Research
             </Button>
@@ -159,20 +158,20 @@ const Expeditions = () => {
       </section>
 
       {/* Active Research Expeditions */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#2D2D2A' }}>
               CURRENT & UPCOMING RESEARCH MISSIONS
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: '#737373' }}>
               Professional documentation and conservation efforts in traditional cannabis regions
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {activeExpeditions.map((expedition) => (
-              <Card key={expedition.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={expedition.id} className="card-clean">
                 <div className="relative h-64">
                   <img 
                     src={expedition.image} 
@@ -181,12 +180,12 @@ const Expeditions = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
-                    <Badge className="bg-emerald-600 text-white">{expedition.type}</Badge>
+                    <Badge style={{ backgroundColor: '#4A5D5A', color: '#F8F7F4' }}>{expedition.type}</Badge>
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
+                <div className="card-content-clean">
+                  <div className="flex items-center gap-4 mb-4 text-sm" style={{ color: '#737373' }}>
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       {expedition.duration}
@@ -196,20 +195,20 @@ const Expeditions = () => {
                     </Badge>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                  <h3 className="card-title-clean">
                     {expedition.title}
                   </h3>
                   
-                  <p className="text-slate-700 mb-4 font-medium">
+                  <p className="mb-4 font-medium" style={{ color: '#737373' }}>
                     {expedition.focus}
                   </p>
                   
                   <div className="mb-6">
-                    <h4 className="font-semibold text-slate-900 mb-2">Research Objectives:</h4>
+                    <h4 className="font-semibold mb-2" style={{ color: '#2D2D2A' }}>Research Objectives:</h4>
                     <ul className="space-y-1">
                       {expedition.objectives.map((objective, index) => (
-                        <li key={index} className="text-slate-600 text-sm flex items-start gap-2">
-                          <span className="text-emerald-600 mt-1">•</span>
+                        <li key={index} className="text-sm flex items-start gap-2" style={{ color: '#737373' }}>
+                          <span style={{ color: '#4A5D5A' }} className="mt-1">•</span>
                           {objective}
                         </li>
                       ))}
@@ -218,34 +217,34 @@ const Expeditions = () => {
                   
                   <div className="flex flex-col gap-2 mb-6 text-sm">
                     <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-slate-500" />
-                      <span className="text-slate-600">Partnership: </span>
-                      <span className="font-medium text-slate-900">{expedition.partnership}</span>
+                      <Users className="h-4 w-4" style={{ color: '#737373' }} />
+                      <span style={{ color: '#737373' }}>Partnership: </span>
+                      <span className="font-medium" style={{ color: '#2D2D2A' }}>{expedition.partnership}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Heart className="h-4 w-4 text-slate-500" />
-                      <span className="text-slate-600">Funding: </span>
-                      <span className="font-medium text-slate-900">{expedition.funding}</span>
+                      <Heart className="h-4 w-4" style={{ color: '#737373' }} />
+                      <span style={{ color: '#737373' }}>Funding: </span>
+                      <span className="font-medium" style={{ color: '#2D2D2A' }}>{expedition.funding}</span>
                     </div>
                   </div>
                   
                   <div className="flex gap-3">
-                    <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+                    <Button size="sm" className="btn-primary-clean">
                       Follow Progress
                     </Button>
                     <Button size="sm" variant="outline">
                       Support Mission
                     </Button>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Community-Supported Research Programs */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
@@ -313,7 +312,7 @@ const Expeditions = () => {
       </section>
 
       {/* Professional Research Services */}
-      <section className="py-20 bg-white">
+      <section className="py-20" style={{ backgroundColor: '#F8F7F4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">

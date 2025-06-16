@@ -14,31 +14,47 @@ const SharedHeader = () => {
   ];
 
   return (
-    <header style={{ backgroundColor: 'transparent' }} className="border-b border-border/40 sticky top-0 z-50">
-      <div className="swiss-grid py-8">
+    <header 
+      className="border-b sticky top-0 z-50"
+      style={{ 
+        backgroundColor: '#F8F7F4',
+        borderColor: 'rgba(229, 228, 226, 0.8)',
+        backdropFilter: 'blur(8px)'
+      }}
+    >
+      <div className="swiss-grid py-6">
         <div className="col-span-12 flex justify-between items-center">
-          {/* Refined Logo */}
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-4">
-            <div className="w-8 h-8 flex items-center justify-center" style={{ backgroundColor: '#4A5D5A' }}>
+            <div 
+              className="w-8 h-8 flex items-center justify-center"
+              style={{ backgroundColor: '#4A5D5A' }}
+            >
               <span className="text-white font-medium text-sm tracking-wider">H</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-light tracking-wider" style={{ color: '#2D2D2A' }}>
+              <span 
+                className="text-lg font-light tracking-wider"
+                style={{ color: '#2D2D2A' }}
+              >
                 Himalayan Heritage
               </span>
-              <span className="text-xs font-light tracking-widest uppercase" style={{ color: '#737373' }}>
+              <span 
+                className="text-xs font-light tracking-widest uppercase"
+                style={{ color: '#737373' }}
+              >
                 Botanical Archive
               </span>
             </div>
           </Link>
           
-          {/* Clean Navigation */}
+          {/* Navigation */}
           <nav className="hidden lg:flex items-center space-x-12">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path}
                 to={link.path} 
-                className={`text-sm font-light tracking-wider transition-colors duration-200`}
+                className="text-sm font-light tracking-wider transition-colors duration-200"
                 style={{ 
                   color: location.pathname === link.path ? '#4A5D5A' : '#2D2D2A'
                 }}
@@ -48,7 +64,7 @@ const SharedHeader = () => {
             ))}
           </nav>
           
-          {/* Minimal Support Button */}
+          {/* Support Button */}
           <Button 
             variant="outline" 
             size="sm" 
