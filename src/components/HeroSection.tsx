@@ -3,42 +3,44 @@ import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-slate-50/50">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-50 rounded-full blur-3xl opacity-40"></div>
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-40"></div>
-      </div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Premium Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center&q=90)',
+        }}
+      />
+      
+      {/* Sophisticated Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        {/* Clean Typography */}
-        <h1 className="text-6xl md:text-8xl font-extralight text-slate-900 leading-none mb-8 tracking-tight">
-          Himalayan
-          <span className="block text-emerald-600 font-light">Heritage</span>
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-8 gentle-fade-in">
+        {/* Primary Headline */}
+        <h1 className="display-text text-white mb-8 font-light">
+          Guardians of Himalayan
+          <span className="block font-normal">Landrace Genetics</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-slate-500 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
-          Preserving ancient cannabis genetics through modern science
+        {/* Sophisticated Subheading */}
+        <p className="editorial-text text-white/90 mb-12 mx-auto max-w-2xl">
+          A botanical archive preserving ancient cannabis genetics from the sacred peaks 
+          of the Himalayas through scientific research and cultural reverence.
         </p>
         
-        {/* Minimal CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-            Explore Collection
-          </Button>
-          <Button variant="ghost" className="text-slate-600 hover:text-slate-900 px-8 py-6 rounded-full text-lg font-medium">
-            Learn More →
-          </Button>
-        </div>
+        {/* Single, Clear CTA */}
+        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-medium tracking-wide transition-all duration-300 soft-shadow-hover">
+          Explore the Collection
+        </Button>
         
-        {/* Clean Trust Indicators */}
-        <div className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-slate-400 font-light">
-          <span>Educational Research</span>
-          <span>•</span>
-          <span>Genetic Preservation</span>
-          <span>•</span>
-          <span>Traditional Knowledge</span>
+        {/* Minimal Trust Indicators */}
+        <div className="mt-16 flex justify-center items-center gap-8 text-sm text-white/70 font-sans">
+          <span>Scientific Research</span>
+          <div className="w-1 h-1 bg-white/40 rounded-full"></div>
+          <span>Cultural Preservation</span>
+          <div className="w-1 h-1 bg-white/40 rounded-full"></div>
+          <span>Educational Archive</span>
         </div>
       </div>
     </div>

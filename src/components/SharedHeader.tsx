@@ -7,41 +7,41 @@ const SharedHeader = () => {
   const location = useLocation();
 
   const navigationLinks = [
-    { path: '/', label: 'Home' },
     { path: '/shop', label: 'Shop' },
     { path: '/expeditions', label: 'Expeditions' },
     { path: '/blog', label: 'Blog' },
-    { path: '/community', label: 'Community' },
-    { path: '/learn', label: 'Learn' },
     { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' },
-    { path: '/support', label: 'Support' },
   ];
 
   return (
-    <header className="bg-white/80 backdrop-blur-lg border-b border-slate-100 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex justify-between items-center h-20">
-          {/* Minimal Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-lg">H</span>
+    <header className="bg-background/95 backdrop-blur-xl border-b border-border sticky top-0 z-50">
+      <div className="swiss-grid py-6">
+        <div className="col-span-12 flex justify-between items-center">
+          {/* Sophisticated Logo */}
+          <Link to="/" className="flex items-center space-x-4">
+            <div className="w-8 h-8 bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-medium text-sm tracking-wider">H</span>
             </div>
-            <span className="text-2xl font-light text-slate-900 tracking-tight">
-              Himalayan Heritage
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg font-light text-foreground tracking-wider">
+                Himalayan Heritage
+              </span>
+              <span className="text-xs text-muted-foreground font-light tracking-widest uppercase">
+                Botanical Archive
+              </span>
+            </div>
           </Link>
           
           {/* Clean Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-12">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.path}
                 to={link.path} 
-                className={`text-sm font-medium transition-all duration-200 ${
+                className={`text-sm font-light tracking-wider transition-colors duration-200 ${
                   location.pathname === link.path 
-                    ? 'text-emerald-600 scale-105' 
-                    : 'text-slate-600 hover:text-slate-900 hover:scale-105'
+                    ? 'text-primary' 
+                    : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {link.label}
@@ -49,9 +49,9 @@ const SharedHeader = () => {
             ))}
           </nav>
           
-          {/* Minimal CTA */}
-          <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 rounded-full px-6">
-            Explore
+          {/* Minimal Support Button */}
+          <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-light tracking-wider px-6">
+            Support
           </Button>
         </div>
       </div>
