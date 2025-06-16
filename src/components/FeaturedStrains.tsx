@@ -55,7 +55,7 @@ const FeaturedStrains = () => {
           </p>
         </div>
 
-        {/* Clean Grid of Strain Cards */}
+        {/* Archival Grid of Strain Cards */}
         <div className="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {strains.map((strain, index) => (
             <div
@@ -63,8 +63,8 @@ const FeaturedStrains = () => {
               className="group cursor-pointer subtle-lift gentle-fade-in"
               style={{ animationDelay: `${index * 120}ms` }}
             >
-              {/* Clean Card Structure */}
-              <div className="bg-background overflow-hidden soft-shadow">
+              {/* Clean Archival Card */}
+              <div className="bg-background overflow-hidden">
                 {/* High-Quality Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -72,13 +72,10 @@ const FeaturedStrains = () => {
                     alt={strain.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  
-                  {/* Subtle Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
                 {/* Minimal Content */}
-                <div className="p-8">
+                <div className="pt-6">
                   <h3 className="text-xl font-medium text-foreground mb-2 tracking-wide">
                     {strain.name}
                   </h3>

@@ -57,7 +57,7 @@ const Himachal = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <SharedHeader />
       
       {/* Hero Section */}
@@ -68,7 +68,7 @@ const Himachal = () => {
             backgroundImage: 'url(https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&h=1080&fit=crop&crop=center)'
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
         
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
@@ -82,40 +82,43 @@ const Himachal = () => {
       </div>
 
       {/* Explore the Regions Section */}
-      <div className="py-32 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="font-lora text-4xl md:text-5xl mb-6 font-light tracking-wide text-slate-900">
+      <div className="premium-spacing">
+        <div className="swiss-grid">
+          <div className="col-span-12 text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6 tracking-wide">
               Explore the Regions
             </h2>
-            <p className="font-inter text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="editorial-text mx-auto">
               Each region holds centuries of traditional knowledge and unique genetic heritage, 
               carefully preserved by local communities through generations.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {regions.map((region) => (
               <div
                 key={region.id}
                 onClick={() => handleCardClick(region.path)}
-                className="bg-white cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-xl group overflow-hidden"
+                className="group cursor-pointer subtle-lift gentle-fade-in"
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={region.image}
-                    alt={region.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="font-lora text-2xl mb-3 font-light tracking-wide text-slate-900 group-hover:text-slate-700 transition-colors">
-                    {region.name}
-                  </h3>
-                  <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">
-                    {region.subtitle}
-                  </p>
+                {/* Clean Archival Card */}
+                <div className="bg-background overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={region.image}
+                      alt={region.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  
+                  <div className="pt-6">
+                    <h3 className="text-2xl font-light text-foreground mb-3 tracking-wide">
+                      {region.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                      {region.subtitle}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -123,30 +126,33 @@ const Himachal = () => {
         </div>
       </div>
 
-      {/* Heritage & Research Section */}
-      <div className="py-32 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-lora text-4xl md:text-5xl mb-8 font-light tracking-wide text-slate-900">
-            Preserving Ancient Knowledge
-          </h2>
-          <p className="font-inter text-lg text-slate-600 leading-relaxed mb-12">
-            Our work in Himachal Pradesh focuses on documenting and preserving traditional 
-            cannabis varieties that have been cultivated in these mountains for millennia. 
-            Through collaboration with local communities, we ensure this botanical heritage 
-            is protected for future generations of researchers and educators.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="text-center">
-              <div className="text-3xl font-lora text-slate-900 mb-2">12+</div>
-              <div className="font-inter text-sm text-slate-600 uppercase tracking-wider">Documented Regions</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-lora text-slate-900 mb-2">50+</div>
-              <div className="font-inter text-sm text-slate-600 uppercase tracking-wider">Local Partnerships</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-lora text-slate-900 mb-2">8</div>
-              <div className="font-inter text-sm text-slate-600 uppercase tracking-wider">Years of Research</div>
+      {/* Heritage & Research Section - Using the Perfect Style */}
+      <div className="premium-spacing">
+        <div className="swiss-grid">
+          <div className="col-span-12 text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8 tracking-wide">
+              Preserving Ancient Knowledge
+            </h2>
+            <p className="editorial-text mx-auto mb-12">
+              Our work in Himachal Pradesh focuses on documenting and preserving traditional 
+              cannabis varieties that have been cultivated in these mountains for millennia. 
+              Through collaboration with local communities, we ensure this botanical heritage 
+              is protected for future generations of researchers and educators.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+              <div className="text-center">
+                <div className="text-3xl font-light text-foreground mb-2">12+</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Documented Regions</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-light text-foreground mb-2">50+</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Local Partnerships</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-light text-foreground mb-2">8</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Years of Research</div>
+              </div>
             </div>
           </div>
         </div>

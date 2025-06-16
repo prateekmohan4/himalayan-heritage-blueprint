@@ -14,10 +14,10 @@ const SharedHeader = () => {
   ];
 
   return (
-    <header className="bg-background/95 backdrop-blur-xl border-b border-border sticky top-0 z-50">
-      <div className="swiss-grid py-6">
+    <header className="bg-background border-b border-border/40 sticky top-0 z-50">
+      <div className="swiss-grid py-8">
         <div className="col-span-12 flex justify-between items-center">
-          {/* Sophisticated Logo */}
+          {/* Refined Logo */}
           <Link to="/" className="flex items-center space-x-4">
             <div className="w-8 h-8 bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-medium text-sm tracking-wider">H</span>
