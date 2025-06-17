@@ -1,9 +1,24 @@
 
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   const sections = [
-    { title: "Explore", links: ["Collection", "Regions", "Research"] },
-    { title: "Learn", links: ["Education", "Guides", "Blog"] },
-    { title: "Connect", links: ["Community", "Contact", "Support"] }
+    { title: "Explore", links: [
+      { text: "Collection", href: "/shop" },
+      { text: "Regions", href: "/himachal" },
+      { text: "Research", href: "/research" }
+    ]},
+    { title: "Learn", links: [
+      { text: "Education", href: "/learn" },
+      { text: "Guides", href: "/guides" },
+      { text: "Blog", href: "/blog" }
+    ]},
+    { title: "Connect", links: [
+      { text: "Community", href: "/community" },
+      { text: "Contact", href: "/contact" },
+      { text: "Support", href: "/support" },
+      { text: "Privacy Policy", href: "/privacy-policy" }
+    ]}
   ];
 
   return (
@@ -29,9 +44,12 @@ const Footer = () => {
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href="#" className="text-slate-400 hover:text-white transition-colors text-sm font-light">
-                      {link}
-                    </a>
+                    <Link 
+                      to={link.href} 
+                      className="text-slate-400 hover:text-white transition-colors text-sm font-light"
+                    >
+                      {link.text}
+                    </Link>
                   </li>
                 ))}
               </ul>
