@@ -6,29 +6,29 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap');
 
-/* New Professional Color System - Clean & Minimalist */
+/* Clean & Minimalist Color System */
 
 @layer base {
   :root {
-    /* Professional Color Palette */
-    --background: 255 255 255; /* #FFFFFF - Clean white */
+    /* Clean Professional Palette */
+    --background: 255 255 255; /* #FFFFFF - Pure white */
     --foreground: 26 26 26; /* #1A1A1A - Dark charcoal */
-    --card: 255 255 255; /* #FFFFFF - Pure white for cards */
+    --card: 255 255 255; /* #FFFFFF - Clean white cards */
     --card-foreground: 26 26 26;
     --popover: 255 255 255;
     --popover-foreground: 26 26 26;
-    --primary: 22 163 74; /* #16A34A - Professional green */
+    --primary: 22 163 74; /* #16A34A - Clean green */
     --primary-foreground: 255 255 255;
-    --secondary: 242 242 242; /* #F2F2F2 - Light grey */
+    --secondary: 248 250 252; /* #F8FAFC - Ultra light grey */
     --secondary-foreground: 26 26 26;
-    --muted: 242 242 242;
-    --muted-foreground: 115 115 115;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139; /* #64748B - Muted grey */
     --accent: 22 163 74;
     --accent-foreground: 255 255 255;
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
-    --border: 234 234 234; /* #EAEAEA - Subtle light grey */
-    --input: 234 234 234;
+    --border: 226 232 240; /* #E2E8F0 - Clean light border */
+    --input: 226 232 240;
     --ring: 22 163 74;
     --radius: 0.5rem;
   }
@@ -88,23 +88,24 @@
 
   header.scrolled {
     background-color: #FFFFFF !important;
-    border-bottom: 1px solid #EAEAEA;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  /* Card System - Clean and minimal */
-  .heritage-card {
+  /* Clean Card System */
+  .heritage-card, .card-clean {
     background-color: #FFFFFF !important;
-    border: 1px solid #EAEAEA;
+    border: 1px solid #E2E8F0;
     border-radius: 0.75rem;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
-  .heritage-card:hover {
+  .heritage-card:hover, .card-clean:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #CBD5E1;
   }
 
   .heritage-card-image {
@@ -121,15 +122,15 @@
   }
 
   .heritage-card:hover .heritage-card-image img {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
-  .heritage-card-content {
+  .heritage-card-content, .card-content-clean {
     padding: 1.5rem;
     background-color: #FFFFFF !important;
   }
 
-  .heritage-card-title {
+  .heritage-card-title, .card-title-clean {
     font-family: 'Inter', sans-serif !important;
     font-size: 1.25rem;
     font-weight: 600;
@@ -141,12 +142,12 @@
   .heritage-card-subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #737373 !important;
+    color: #64748B !important;
     line-height: 1.5;
   }
 
-  /* Button System */
-  .btn-primary {
+  /* Button System - Clean and Modern */
+  .btn-primary, .btn-primary-clean {
     background-color: #16A34A !important;
     color: #ffffff !important;
     border: none;
@@ -160,16 +161,16 @@
     letter-spacing: 0;
   }
 
-  .btn-primary:hover {
+  .btn-primary:hover, .btn-primary-clean:hover {
     background-color: #15803D !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
   }
 
   .btn-secondary {
-    background-color: #F2F2F2 !important;
+    background-color: #F8FAFC !important;
     color: #1A1A1A !important;
-    border: 1px solid #EAEAEA;
+    border: 1px solid #E2E8F0;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     font-family: 'Inter', sans-serif;
@@ -179,8 +180,8 @@
   }
 
   .btn-secondary:hover {
-    background-color: #E5E5E5 !important;
-    border-color: #D4D4D4;
+    background-color: #F1F5F9 !important;
+    border-color: #CBD5E1;
   }
 
   /* Navigation Links */
@@ -208,7 +209,7 @@
   /* Form Elements */
   .form-input {
     background-color: #ffffff !important;
-    border: 1px solid #EAEAEA;
+    border: 1px solid #E2E8F0;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     font-family: 'Inter', sans-serif;
@@ -239,8 +240,9 @@
   }
 
   .badge-secondary {
-    background-color: #F2F2F2;
+    background-color: #F8FAFC;
     color: #1A1A1A;
+    border: 1px solid #E2E8F0;
   }
 
   /* Layout Utilities */
@@ -250,6 +252,15 @@
 
   .section-padding-sm {
     padding: 4rem 0;
+  }
+
+  /* Clean Page Backgrounds */
+  .page-background {
+    background-color: #FFFFFF !important;
+  }
+
+  .section-background {
+    background-color: #F8FAFC !important;
   }
 
   /* Animation System */
@@ -274,7 +285,26 @@
 
   .hover-lift:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Remove any yellow backgrounds globally */
+  .bg-yellow-50,
+  .bg-yellow-100,
+  .bg-yellow-200,
+  .bg-yellow-300,
+  .bg-yellow-400,
+  .bg-yellow-500,
+  .bg-amber-50,
+  .bg-amber-100 {
+    background-color: #FFFFFF !important;
+  }
+
+  /* Ensure all text is readable */
+  .text-yellow-800,
+  .text-yellow-900,
+  .text-amber-800 {
+    color: #1A1A1A !important;
   }
 }
 
@@ -298,7 +328,7 @@
 }
 
 @media (max-width: 480px) {
-  .heritage-card-content {
+  .heritage-card-content, .card-content-clean {
     padding: 1rem;
   }
 }
