@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,6 +8,7 @@ const SharedHeader = () => {
 
   const navigationLinks = [
     { path: '/shop', label: 'Shop' },
+    { path: '/journal', label: 'Journal' },
     { path: '/expeditions', label: 'Expeditions' },
     { path: '/himachal', label: 'Regions' },
   ];
