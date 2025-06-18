@@ -20,9 +20,6 @@ import Himachal from "./pages/Himachal";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
-import AccountDashboard from "./pages/AccountDashboard";
-import AccountOrders from "./pages/AccountOrders";
-import AccountAddresses from "./pages/AccountAddresses";
 import FAQ from "./pages/FAQ";
 import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
@@ -55,11 +52,6 @@ const App = () => (
           
           {/* E-commerce routes */}
           <Route path="/checkout" element={<Checkout />} />
-          
-          {/* Account routes */}
-          <Route path="/account/dashboard" element={<AccountDashboard />} />
-          <Route path="/account/orders" element={<AccountOrders />} />
-          <Route path="/account/addresses" element={<AccountAddresses />} />
           
           {/* Legal pages */}
           <Route path="/faq" element={<FAQ />} />

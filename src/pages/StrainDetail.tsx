@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import SharedHeader from '@/components/SharedHeader';
@@ -11,6 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Mountain, Calendar, Leaf } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const StrainDetail = () => {
   const { slug } = useParams();
@@ -23,6 +23,7 @@ const StrainDetail = () => {
     altitude: "2652m",
     harvestSeason: "October - November",
     traditionalUse: "Sacred charas production",
+    price: 85,
     description: `This exceptional landrace variety has been cultivated in the sacred village of Malana for over a millennium. Known for its unique terpene profile and resinous qualities, this strain represents one of the purest genetic lineages in the Himalayan region.
 
 The cultivation practices remain unchanged from ancient times, with local farmers using traditional methods passed down through generations. The high altitude and specific microclimate of Malana village contribute to the distinctive characteristics that make this strain highly sought after by researchers and cultivators worldwide.`,
@@ -55,7 +56,7 @@ The cultivation practices remain unchanged from ancient times, with local farmer
       aroma: "Earthy, pine, and citrus notes with hints of spice and traditional incense",
       effects: ["Deep relaxation", "Spiritual contemplation", "Pain relief", "Traditional ceremonial use"]
     },
-    availability: "Limited Stock",
+    availability: "In Stock",
     tags: ["100% Landrace", "Traditional Cultivation", "Sacred Heritage"]
   };
 
@@ -96,10 +97,10 @@ The cultivation practices remain unchanged from ancient times, with local farmer
   ];
 
   return (
-    <div style={{ backgroundColor: '#F8F7F4', minHeight: '100vh' }}>
+    <div className="min-h-screen bg-white">
       <SharedHeader />
       
-      <main className="py-20">
+      <main className="py-12">
         <div className="max-w-7xl mx-auto px-6">
           
           {/* Breadcrumbs */}
@@ -124,7 +125,7 @@ The cultivation practices remain unchanged from ancient times, with local farmer
                   <Badge 
                     className={`text-xs ${
                       strain.availability === 'In Stock' 
-                        ? 'bg-emerald-100 text-emerald-700'
+                        ? 'bg-green-100 text-green-700'
                         : 'bg-amber-100 text-amber-700'
                     }`}
                   >
@@ -136,7 +137,7 @@ The cultivation practices remain unchanged from ancient times, with local farmer
                   className="text-4xl font-bold mb-2"
                   style={{ 
                     fontFamily: 'Inter, sans-serif',
-                    color: '#333333',
+                    color: '#1A1A1A',
                     letterSpacing: '-0.025em'
                   }}
                 >
@@ -144,11 +145,18 @@ The cultivation practices remain unchanged from ancient times, with local farmer
                 </h1>
                 
                 <h2 
-                  className="text-xl text-gray-600 mb-6"
-                  style={{ fontFamily: 'Lora, serif' }}
+                  className="text-xl mb-4"
+                  style={{ 
+                    fontFamily: 'Inter, sans-serif',
+                    color: '#737373'
+                  }}
                 >
                   {strain.subtitle}
                 </h2>
+
+                <div className="text-3xl font-bold mb-6" style={{ color: '#1A1A1A' }}>
+                  ${strain.price}
+                </div>
               </div>
               
               {/* Key Data Section */}
@@ -158,15 +166,15 @@ The cultivation practices remain unchanged from ancient times, with local farmer
               <div className="mb-8">
                 <h3 
                   className="text-lg font-semibold mb-4"
-                  style={{ color: '#333333', fontFamily: 'Inter, sans-serif' }}
+                  style={{ color: '#1A1A1A', fontFamily: 'Inter, sans-serif' }}
                 >
                   Key Characteristics
                 </h3>
                 <ul className="space-y-2">
                   {strain.characteristics.map((char, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="text-emerald-500 mr-2">•</span>
-                      <span style={{ fontFamily: 'Lora, serif', color: '#555555' }}>
+                      <span className="mr-2" style={{ color: '#16A34A' }}>•</span>
+                      <span style={{ fontFamily: 'Inter, sans-serif', color: '#737373' }}>
                         {char}
                       </span>
                     </li>
@@ -183,14 +191,30 @@ The cultivation practices remain unchanged from ancient times, with local farmer
                 />
               </div>
               
-              {/* CTA Button */}
-              <Button 
-                size="lg"
-                className="w-full text-white"
-                style={{ backgroundColor: '#5a6e5a' }}
-              >
-                Request Information
-              </Button>
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <Link to="/checkout">
+                  <Button 
+                    size="lg"
+                    className="w-full text-white font-semibold"
+                    style={{ backgroundColor: '#16A34A' }}
+                  >
+                    Buy Now - ${strain.price}
+                  </Button>
+                </Link>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="w-full font-semibold"
+                  style={{ 
+                    borderColor: '#EAEAEA',
+                    backgroundColor: '#F2F2F2',
+                    color: '#1A1A1A'
+                  }}
+                >
+                  Add to Cart
+                </Button>
+              </div>
             </div>
           </div>
           
