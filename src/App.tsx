@@ -19,6 +19,14 @@ import Support from "./pages/Support";
 import Himachal from "./pages/Himachal";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
+import AccountDashboard from "./pages/AccountDashboard";
+import AccountOrders from "./pages/AccountOrders";
+import AccountAddresses from "./pages/AccountAddresses";
+import FAQ from "./pages/FAQ";
+import TermsOfService from "./pages/TermsOfService";
+import ShippingPolicy from "./pages/ShippingPolicy";
+import LegalDisclaimer from "./pages/LegalDisclaimer";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +52,21 @@ const App = () => (
           <Route path="/himachal" element={<Himachal />} />
           <Route path="/regions/:slug" element={<Himachal />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          
+          {/* E-commerce routes */}
+          <Route path="/checkout" element={<Checkout />} />
+          
+          {/* Account routes */}
+          <Route path="/account/dashboard" element={<AccountDashboard />} />
+          <Route path="/account/orders" element={<AccountOrders />} />
+          <Route path="/account/addresses" element={<AccountAddresses />} />
+          
+          {/* Legal pages */}
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/legal-disclaimer" element={<LegalDisclaimer />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

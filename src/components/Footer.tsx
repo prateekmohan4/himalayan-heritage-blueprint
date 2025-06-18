@@ -10,21 +10,28 @@ const Footer = () => {
     ]},
     { title: "Learn", links: [
       { text: "Education", href: "/learn" },
-      { text: "Guides", href: "/guides" },
+      { text: "FAQ", href: "/faq" },
       { text: "Blog", href: "/blog" }
     ]},
-    { title: "Connect", links: [
-      { text: "Community", href: "/community" },
+    { title: "Help & Support", links: [
       { text: "Contact", href: "/contact" },
       { text: "Support", href: "/support" },
-      { text: "Privacy Policy", href: "/privacy-policy" }
+      { text: "Shipping Policy", href: "/shipping-policy" },
+      { text: "FAQ", href: "/faq" }
+    ]},
+    { title: "Our Company", links: [
+      { text: "About Us", href: "/about" },
+      { text: "Community", href: "/community" },
+      { text: "Terms of Service", href: "/terms-of-service" },
+      { text: "Privacy Policy", href: "/privacy-policy" },
+      { text: "Legal Disclaimer", href: "/legal-disclaimer" }
     ]}
   ];
 
   return (
     <footer className="bg-slate-900 text-white py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <h3 className="text-xl font-light mb-4 text-white">
