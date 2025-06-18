@@ -5,6 +5,9 @@ import SharedHeader from '@/components/SharedHeader';
 import Footer from '@/components/Footer';
 import ImageGallery from '@/components/ImageGallery';
 import KeyDataSection from '@/components/KeyDataSection';
+import StrainTabs from '@/components/StrainTabs';
+import RelatedStrains from '@/components/RelatedStrains';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Mountain, Calendar, Leaf } from 'lucide-react';
@@ -41,9 +44,56 @@ The cultivation practices remain unchanged from ancient times, with local farmer
       "Sacred cultivation heritage",
       "Unique terpene profile"
     ],
+    cultivationData: {
+      floweringTime: "65-75 days",
+      yield: "Medium to High",
+      difficulty: "Moderate",
+      harvestSeason: "October - November"
+    },
+    terpeneProfile: {
+      primary: ["Myrcene", "Pinene", "Limonene", "Caryophyllene"],
+      aroma: "Earthy, pine, and citrus notes with hints of spice and traditional incense",
+      effects: ["Deep relaxation", "Spiritual contemplation", "Pain relief", "Traditional ceremonial use"]
+    },
     availability: "Limited Stock",
     tags: ["100% Landrace", "Traditional Cultivation", "Sacred Heritage"]
   };
+
+  const relatedStrains = [
+    {
+      id: 2,
+      name: "Kullu Premium",
+      origin: "Kullu Valley",
+      region: "Middle Hills",
+      altitude: "1800m",
+      image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      availability: "In Stock"
+    },
+    {
+      id: 3,
+      name: "Kashmir Gold",
+      origin: "Srinagar",
+      region: "Kashmir Valley",
+      altitude: "1600m",
+      image: "https://images.unsplash.com/photo-1574263867128-a3d5c1b1decc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      availability: "In Stock"
+    },
+    {
+      id: 4,
+      name: "Dehradun Valley",
+      origin: "Dehradun",
+      region: "Foothills",
+      altitude: "700m",
+      image: "https://images.unsplash.com/photo-1565520651265-3d5f1b5d9e87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      availability: "Coming Soon"
+    }
+  ];
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Shop", href: "/shop" },
+    { label: strain.name }
+  ];
 
   return (
     <div style={{ backgroundColor: '#F8F7F4', minHeight: '100vh' }}>
@@ -51,6 +101,10 @@ The cultivation practices remain unchanged from ancient times, with local farmer
       
       <main className="py-20">
         <div className="max-w-7xl mx-auto px-6">
+          
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={breadcrumbItems} />
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
             {/* Left Column - Image Gallery */}
@@ -120,28 +174,13 @@ The cultivation practices remain unchanged from ancient times, with local farmer
                 </ul>
               </div>
               
-              {/* Description */}
+              {/* Tabbed Information */}
               <div className="mb-8">
-                <h3 
-                  className="text-lg font-semibold mb-4"
-                  style={{ color: '#333333', fontFamily: 'Inter, sans-serif' }}
-                >
-                  Description
-                </h3>
-                <div 
-                  className="prose prose-lg max-w-none"
-                  style={{
-                    fontFamily: 'Lora, serif',
-                    lineHeight: '1.7',
-                    color: '#555555'
-                  }}
-                >
-                  {strain.description.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="mb-4">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
+                <StrainTabs 
+                  description={strain.description}
+                  cultivationData={strain.cultivationData}
+                  terpeneProfile={strain.terpeneProfile}
+                />
               </div>
               
               {/* CTA Button */}
@@ -154,6 +193,9 @@ The cultivation practices remain unchanged from ancient times, with local farmer
               </Button>
             </div>
           </div>
+          
+          {/* Related Strains */}
+          <RelatedStrains strains={relatedStrains} />
         </div>
       </main>
       

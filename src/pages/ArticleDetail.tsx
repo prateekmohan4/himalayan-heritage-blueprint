@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SharedHeader from '@/components/SharedHeader';
 import Footer from '@/components/Footer';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 
@@ -67,12 +68,21 @@ The Parvati Valley cannabis populations represent a genetic treasure trove of gl
 Further research is planned to expand our understanding of the genetic mechanisms underlying the unique adaptations we've documented.`
   };
 
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Journal", href: "/journal" },
+    { label: article.title }
+  ];
+
   return (
     <div style={{ backgroundColor: '#F8F7F4', minHeight: '100vh' }}>
       <SharedHeader />
       
       <main className="py-20">
         <div className="max-w-4xl mx-auto px-6">
+          
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={breadcrumbItems} />
           
           {/* Breadcrumb Navigation */}
           <div className="mb-8">

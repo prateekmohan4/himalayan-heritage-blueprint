@@ -1,19 +1,18 @@
-
 import React, { useState } from 'react';
-import { Search, Filter, Grid, List, MapPin, Mountain, Heart, X } from 'lucide-react';
+import { Grid, List, MapPin, Mountain, Heart, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SharedHeader from '@/components/SharedHeader';
+import ShopControls from '@/components/ShopControls';
+import StrainCardSkeleton from '@/components/StrainCardSkeleton';
 
 const Shop = () => {
-  const [selectedFilters, setSelectedFilters] = useState({
-    regions: [],
-    altitude: [],
-    traditionalUse: [],
-    availability: []
-  });
-  const [viewMode, setViewMode] = useState('grid');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  const [selectedGenetics, setSelectedGenetics] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState('region');
+  const [viewMode, setViewMode] = useState('grid');
+  const [isLoading, setIsLoading] = useState(false);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   // Sample strain data for blueprint
@@ -76,6 +75,13 @@ const Shop = () => {
     }
   ];
 
+  // Simulate loading state
+  React.useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, [searchTerm, selectedRegions, selectedGenetics, sortBy]);
+
   const getRegionBadgeColor = (region) => {
     const colors = {
       "High Himalayas": "bg-blue-500",
@@ -122,16 +128,6 @@ const Shop = () => {
             </p>
           </div>
           
-          {/* Search Bar */}
-          <div className="max-w-md mx-auto relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5" />
-            <input
-              type="text"
-              placeholder="Search strains..."
-              className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
-            />
-          </div>
-          
           {/* Results Count */}
           <p className="text-center mt-4 text-slate-600">
             Showing <span className="font-semibold">{strains.length}</span> of <span className="font-semibold">53</span> strains
@@ -140,109 +136,52 @@ const Shop = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Shop Controls */}
+        <ShopControls
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          selectedRegions={selectedRegions}
+          onRegionChange={setSelectedRegions}
+          selectedGenetics={selectedGenetics}
+          onGeneticsChange={setSelectedGenetics}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+        />
+
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Desktop Sidebar */}
+          {/* Desktop Sidebar - Simplified since we have ShopControls now */}
           <div className="hidden lg:block w-80 flex-shrink-0">
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-6">Filters</h3>
+              <h3 className="text-lg font-semibold text-slate-900 mb-6">Quick Filters</h3>
               
-              {/* Region Filters */}
-              <div className="mb-6">
-                <h4 className="font-medium text-slate-900 mb-3 flex items-center">
-                  <span className="mr-2">🌍</span> Region
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Seeds from the High Himalayas (12)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Seeds from the Middle Hills (18)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Seeds from the Foothills (15)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Seeds from Kashmir Valley (8)</span>
-                  </label>
+              {/* Active Filters Display */}
+              {(selectedRegions.length > 0 || selectedGenetics.length > 0) && (
+                <div className="mb-6">
+                  <h4 className="font-medium text-slate-900 mb-3">Active Filters</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedRegions.map(region => (
+                      <Badge key={region} variant="secondary" className="text-xs">
+                        {region}
+                      </Badge>
+                    ))}
+                    {selectedGenetics.map(genetic => (
+                      <Badge key={genetic} variant="secondary" className="text-xs">
+                        {genetic}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Altitude Range */}
-              <div className="mb-6">
-                <h4 className="font-medium text-slate-900 mb-3 flex items-center">
-                  <span className="mr-2">🏔️</span> Altitude Range
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">3000m+ (12)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">2000-3000m (20)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">1000-2000m (15)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Below 1000m (6)</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Traditional Use */}
-              <div className="mb-6">
-                <h4 className="font-medium text-slate-900 mb-3 flex items-center">
-                  <span className="mr-2">🌿</span> Traditional Use
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Charas Production (25)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Ceremonial Use (10)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Traditional Medicine (8)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Heritage Preservation (15)</span>
-                  </label>
-                </div>
-              </div>
-
-              {/* Availability */}
-              <div className="mb-6">
-                <h4 className="font-medium text-slate-900 mb-3 flex items-center">
-                  <span className="mr-2">📦</span> Availability
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">In Stock (35)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Limited Stock (15)</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input type="checkbox" className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
-                    <span className="ml-2 text-sm text-slate-700">Coming Soon (8)</span>
-                  </label>
-                </div>
-              </div>
-
-              <Button variant="outline" className="w-full">
+              <Button 
+                variant="outline" 
+                className="w-full"
+                onClick={() => {
+                  setSelectedRegions([]);
+                  setSelectedGenetics([]);
+                  setSearchTerm('');
+                }}
+              >
                 Clear All Filters
               </Button>
             </div>
@@ -250,143 +189,129 @@ const Shop = () => {
 
           {/* Main Content */}
           <div className="flex-1">
-            {/* Mobile Filter Button & Sort Options */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-              <Button
-                variant="outline"
-                className="lg:hidden"
-                onClick={() => setShowMobileFilters(true)}
-              >
-                <Filter className="h-4 w-4 mr-2" />
-                Filters
-              </Button>
-              
-              <div className="flex items-center gap-4">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 border border-slate-300 rounded-lg bg-white text-sm"
+            {/* View Mode Toggle */}
+            <div className="flex justify-end items-center gap-4 mb-6">
+              <div className="flex items-center border border-slate-300 rounded-lg bg-white">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 ${viewMode === 'grid' ? 'bg-emerald-50 text-emerald-600' : 'text-slate-400'}`}
                 >
-                  <option value="region">Sort by Region</option>
-                  <option value="name">Name A-Z</option>
-                  <option value="altitude">Altitude</option>
-                  <option value="availability">Availability</option>
-                </select>
-                
-                <div className="flex items-center border border-slate-300 rounded-lg bg-white">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 ${viewMode === 'grid' ? 'bg-emerald-50 text-emerald-600' : 'text-slate-400'}`}
-                  >
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 ${viewMode === 'list' ? 'bg-emerald-50 text-emerald-600' : 'text-slate-400'}`}
-                  >
-                    <List className="h-4 w-4" />
-                  </button>
-                </div>
+                  <Grid className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 ${viewMode === 'list' ? 'bg-emerald-50 text-emerald-600' : 'text-slate-400'}`}
+                >
+                  <List className="h-4 w-4" />
+                </button>
               </div>
             </div>
 
-            {/* Product Grid */}
-            <div className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'}`}>
-              {strains.map((strain) => (
-                <div
-                  key={strain.id}
-                  className="group bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  {/* Image */}
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={strain.image}
-                      alt={strain.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                    
-                    {/* Region Badge */}
-                    <div className="absolute top-3 right-3">
-                      <Badge className={`${getRegionBadgeColor(strain.region)} text-white border-0 text-xs`}>
-                        📍 {strain.region}
-                      </Badge>
+            {/* Product Grid with Loading States */}
+            {isLoading ? (
+              <div className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'}`}>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <StrainCardSkeleton key={index} />
+                ))}
+              </div>
+            ) : (
+              <div className={`grid gap-6 ${viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' : 'grid-cols-1'}`}>
+                {strains.map((strain) => (
+                  <div
+                    key={strain.id}
+                    className="group bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  >
+                    {/* Image */}
+                    <div className="relative h-56 overflow-hidden">
+                      <img
+                        src={strain.image}
+                        alt={strain.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                      
+                      {/* Region Badge */}
+                      <div className="absolute top-3 right-3">
+                        <Badge className={`${getRegionBadgeColor(strain.region)} text-white border-0 text-xs`}>
+                          📍 {strain.region}
+                        </Badge>
+                      </div>
+                      
+                      {/* Availability Badge */}
+                      <div className="absolute bottom-3 left-3">
+                        <Badge className={`${getAvailabilityColor(strain.availability)} border-0 text-xs`}>
+                          {strain.availability}
+                        </Badge>
+                      </div>
                     </div>
                     
-                    {/* Availability Badge */}
-                    <div className="absolute bottom-3 left-3">
-                      <Badge className={`${getAvailabilityColor(strain.availability)} border-0 text-xs`}>
-                        {strain.availability}
-                      </Badge>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-1">
+                        {strain.name}
+                      </h3>
+                      <p className="text-sm text-slate-600 mb-2 flex items-center">
+                        <MapPin className="h-3 w-3 mr-1" />
+                        {strain.origin}
+                      </p>
+                      <p className="text-sm text-slate-600 mb-4 flex items-center">
+                        <Mountain className="h-3 w-3 mr-1" />
+                        Altitude: {strain.altitude}
+                      </p>
+                      
+                      {/* Characteristics */}
+                      <ul className="space-y-1 mb-4">
+                        {strain.characteristics.map((char, index) => (
+                          <li key={index} className="text-sm text-slate-600 flex items-start">
+                            <span className="text-emerald-500 mr-2">•</span>
+                            {char}
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {/* Traditional Use */}
+                      <blockquote className="text-sm text-slate-600 italic mb-4 pl-3 border-l-2 border-emerald-200">
+                        "{strain.traditionalUse}"
+                      </blockquote>
+                      
+                      {/* Badges */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {strain.badges.map((badge, index) => (
+                          <Badge key={index} variant="secondary" className="text-xs">
+                            {badge}
+                          </Badge>
+                        ))}
+                        {strain.ethicallySourced && (
+                          <Badge variant="outline" className="text-xs text-emerald-600 border-emerald-200">
+                            Ethically Sourced
+                          </Badge>
+                        )}
+                        {strain.communityPartnership && (
+                          <Badge variant="outline" className="text-xs text-blue-600 border-blue-200">
+                            Community Partnership
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      {/* Actions */}
+                      <div className="flex gap-2">
+                        <Button size="sm" className="flex-1">
+                          Learn More
+                        </Button>
+                        <Button size="sm" variant="outline" className="px-3">
+                          <Heart className="h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">
-                      {strain.name}
-                    </h3>
-                    <p className="text-sm text-slate-600 mb-2 flex items-center">
-                      <MapPin className="h-3 w-3 mr-1" />
-                      {strain.origin}
-                    </p>
-                    <p className="text-sm text-slate-600 mb-4 flex items-center">
-                      <Mountain className="h-3 w-3 mr-1" />
-                      Altitude: {strain.altitude}
-                    </p>
-                    
-                    {/* Characteristics */}
-                    <ul className="space-y-1 mb-4">
-                      {strain.characteristics.map((char, index) => (
-                        <li key={index} className="text-sm text-slate-600 flex items-start">
-                          <span className="text-emerald-500 mr-2">•</span>
-                          {char}
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    {/* Traditional Use */}
-                    <blockquote className="text-sm text-slate-600 italic mb-4 pl-3 border-l-2 border-emerald-200">
-                      "{strain.traditionalUse}"
-                    </blockquote>
-                    
-                    {/* Badges */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {strain.badges.map((badge, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {badge}
-                        </Badge>
-                      ))}
-                      {strain.ethicallySourced && (
-                        <Badge variant="outline" className="text-xs text-emerald-600 border-emerald-200">
-                          Ethically Sourced
-                        </Badge>
-                      )}
-                      {strain.communityPartnership && (
-                        <Badge variant="outline" className="text-xs text-blue-600 border-blue-200">
-                          Community Partnership
-                        </Badge>
-                      )}
-                    </div>
-                    
-                    {/* Actions */}
-                    <div className="flex gap-2">
-                      <Button size="sm" className="flex-1">
-                        Learn More
-                      </Button>
-                      <Button size="sm" variant="outline" className="px-3">
-                        <Heart className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Mobile Filter Overlay */}
+      {/* Mobile Filter Overlay - Keep existing code */}
       {showMobileFilters && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
           <div className="fixed inset-y-0 left-0 max-w-xs w-full bg-white shadow-xl">
