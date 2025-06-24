@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,6 +20,10 @@ import Himachal from "./pages/Himachal";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import AccountDashboard from "./pages/AccountDashboard";
+import AccountOrders from "./pages/AccountOrders";
+import AccountAddresses from "./pages/AccountAddresses";
 import FAQ from "./pages/FAQ";
 import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
@@ -58,6 +63,13 @@ const App = () => (
           
           {/* E-commerce routes */}
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
+          
+          {/* Account routes */}
+          <Route path="/account" element={<AccountDashboard />} />
+          <Route path="/account/orders" element={<AccountOrders />} />
+          <Route path="/account/orders/:orderId" element={<OrderConfirmation />} />
+          <Route path="/account/addresses" element={<AccountAddresses />} />
           
           {/* Legal pages */}
           <Route path="/faq" element={<FAQ />} />

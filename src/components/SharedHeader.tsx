@@ -2,14 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, User, ChevronDown } from 'lucide-react';
 import ShoppingCartComponent from '@/components/ShoppingCart';
+import AuthModals from '@/components/AuthModals';
 
 const SharedHeader = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItemCount] = useState(2); // This would come from cart state
+  const [cartItemCount] = useState(2);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // This would come from auth context
+  const [showAccountDropdown, setShowAccountDropdown] = useState(false);
 
   const navigationLinks = [
     { path: '/shop', label: 'Shop' },
@@ -27,6 +32,12 @@ const SharedHeader = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setShowAccountDropdown(false);
+    // Handle logout logic here
+  };
 
   return (
     <>
@@ -142,6 +153,54 @@ const SharedHeader = () => {
                 </Button>
               </Link>
 
+              {/* Authentication */}
+              {isAuthenticated ? (
+                <div className="relative">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setShowAccountDropdown(!showAccountDropdown)}
+                    className="flex items-center space-x-2"
+                  >
+                    <User className="h-4 w-4" style={{ color: '#1A1A1A' }} />
+                    <ChevronDown className="h-3 w-3" style={{ color: '#1A1A1A' }} />
+                  </Button>
+                  
+                  {showAccountDropdown && (
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-200 z-50">
+                      <Link 
+                        to="/account" 
+                        className="block px-4 py-3 text-sm hover:bg-gray-50"
+                        onClick={() => setShowAccountDropdown(false)}
+                      >
+                        My Account
+                      </Link>
+                      <Link 
+                        to="/account/orders" 
+                        className="block px-4 py-3 text-sm hover:bg-gray-50"
+                        onClick={() => setShowAccountDropdown(false)}
+                      >
+                        My Orders
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="block w-full text-left px-4 py-3 text-sm hover:bg-gray-50"
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Button
+                  variant="ghost"
+                  onClick={() => setIsLoginOpen(true)}
+                  className="text-sm font-medium"
+                  style={{ color: '#1A1A1A' }}
+                >
+                  Login
+                </Button>
+              )}
+
               {/* Enhanced Cart Icon with Badge */}
               <Button 
                 variant="ghost" 
@@ -168,6 +227,16 @@ const SharedHeader = () => {
       <ShoppingCartComponent 
         isOpen={isCartOpen} 
         onClose={() => setIsCartOpen(false)} 
+      />
+
+      {/* Authentication Modals */}
+      <AuthModals
+        isLoginOpen={isLoginOpen}
+        isSignUpOpen={isSignUpOpen}
+        onLoginClose={() => setIsLoginOpen(false)}
+        onSignUpClose={() => setIsSignUpOpen(false)}
+        onSwitchToSignUp={() => setIsSignUpOpen(true)}
+        onSwitchToLogin={() => setIsLoginOpen(true)}
       />
     </>
   );
