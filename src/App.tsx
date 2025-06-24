@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +23,10 @@ import FAQ from "./pages/FAQ";
 import TermsOfService from "./pages/TermsOfService";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import LegalDisclaimer from "./pages/LegalDisclaimer";
+import AnnouncementBar from "./components/AnnouncementBar";
+import CookieConsent from "./components/CookieConsent";
+import Origins from "./pages/Origins";
+import Glossary from "./pages/Glossary";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +35,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <AnnouncementBar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -48,6 +52,8 @@ const App = () => (
           <Route path="/support" element={<Support />} />
           <Route path="/himachal" element={<Himachal />} />
           <Route path="/regions/:slug" element={<Himachal />} />
+          <Route path="/origins" element={<Origins />} />
+          <Route path="/guides/glossary" element={<Glossary />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           
           {/* E-commerce routes */}
@@ -63,6 +69,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <CookieConsent />
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -5,7 +5,7 @@ import RegionalCategories from "@/components/RegionalCategories";
 import FeaturedStrains from "@/components/FeaturedStrains";
 import CompanyInfo from "@/components/CompanyInfo";
 import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
+import EnhancedFooter from "@/components/EnhancedFooter";
 
 const Index = () => {
   return (
@@ -16,7 +16,7 @@ const Index = () => {
       <FeaturedStrains />
       <CompanyInfo />
       <Newsletter />
-      <Footer />
+      <EnhancedFooter />
     </div>
   );
 };
